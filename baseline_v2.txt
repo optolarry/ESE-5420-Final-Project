@@ -1,0 +1,33 @@
+# Predicting House Sale Prices in Queens and Brooklyn, NYC
+
+## Group
+Solo project; Xiaoguang (instructor-approved).
+
+## Changes since the proposal
+Dropped classification; reserved the final two months for testing. Added CV-tuned ridge alongside OLS. Interactions and smaller training sets remain planned.
+
+## Data
+NYC DOF Rolling Sales, Brooklyn and Queens, September 2, 2025-August 31, 2026. Of 49,502 raw rows, 26,908 are 1-3 family dwellings; 123 have missing/nonpositive gross area before price filtering. Sequential removals: 14,055 prices below $200,000; 65 missing/nonpositive gross areas; 9 missing/nonpositive construction years; 0 invalid land areas. Final N=12,779; output=natural-log sale price. Inputs: log gross area, log land area, age, units, month, neighborhood and building-class indicators (122 encoded columns on all earlier sales). Borough omitted as redundant with neighborhood.
+
+## Split
+Earlier sales: N=10,737; July-August 2026 final test: N=2,042, never scored. Shuffled 5-fold outer CV, seed 42, on earlier sales only. Encoding/scaling fitted within training folds. Ridge uses inner 5-fold tuning, seeds 43-47. Random CV measures within-period generalization; temporal testing is reserved for later sales.
+
+## Baseline
+OLS with mean and gross-area-only references. Ridge objective: SSE+alpha*sum(beta^2), intercept unpenalized; all ridge inputs standardized within folds. Grid: 13 log-spaced alpha values, 0.01-10,000. Inner-CV choices: 0.01, 100, 100, 100, 100. Five-fold tuning on all earlier sales selects alpha=100 for eventual final fitting; reported ridge performance uses outer CV, separate from tuning.
+
+## Result
+Mean: pooled OOF RMSE 0.5413, 95% interval [0.5314, 0.5511]; fold mean 0.5412, SD 0.0061.
+GrossSF: pooled OOF RMSE 0.4559, 95% interval [0.4454, 0.4670]; fold mean 0.4558, SD 0.0075.
+OLS: pooled OOF RMSE 0.3433, 95% interval [0.3341, 0.3524]; fold mean 0.3431, SD 0.0115.
+Ridge: pooled OOF RMSE 0.3433, 95% interval [0.3342, 0.3524]; fold mean 0.3431, SD 0.0113.
+Error bars: 2,000 paired row-bootstrap resamples of fixed out-of-fold (OOF) squared errors, seed 42; percentile intervals. These measure evaluation-sample variability conditional on fitted folds, not full retraining uncertainty. Fold SD is reported separately.
+
+## Issues found
+Unseen neighborhoods use the fit-fold reference category. Repeated-property sales and duplicate-looking records remain; dependence may make row-bootstrap intervals optimistic. Low price is a filtering rule, not proof of a non-market transfer.
+
+## Next steps
+Xiaoguang: before November 16, add neighborhood/class interactions, ridge/lasso comparisons and training-size experiments (500-5,000). Develop comparisons on earlier sales; reserve final temporal-test learning curves and paired model-minus-OLS bootstrap for the frozen analysis.
+
+## Code
+https://github.com/optolarry/ESE-5420-Final-Project
+Local script: baseline_checkpoint_v2.py. Repository upload/access remains to be verified.
