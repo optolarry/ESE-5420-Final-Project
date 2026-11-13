@@ -1,0 +1,37 @@
+{
+  "struct_OLS": {
+    "alpha": null,
+    "columns": 7,
+    "rank": 7
+  },
+  "add_OLS": {
+    "alpha": null,
+    "columns": 122,
+    "rank": 122
+  },
+  "add_Ridge": {
+    "alpha": 100.0,
+    "columns": 122,
+    "rank": 122
+  },
+  "add_Lasso": {
+    "alpha": 0.00031622776601683794,
+    "columns": 122,
+    "rank": 122
+  },
+  "interaction_OLS": {
+    "alpha": null,
+    "columns": 327,
+    "rank": 321
+  },
+  "interaction_Ridge": {
+    "alpha": 100.0,
+    "columns": 327,
+    "rank": 321
+  },
+  "interaction_Lasso": {
+    "alpha": 0.001,
+    "columns": 327,
+    "rank": 321
+  }
+}

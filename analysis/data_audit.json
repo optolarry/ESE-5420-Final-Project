@@ -1,0 +1,22 @@
+{
+  "raw": 49502,
+  "families": 26908,
+  "missing_gross_before_price": 123,
+  "sequential_drops": {
+    "SALE PRICE": 14055,
+    "GROSS SQUARE FEET": 65,
+    "YEAR BUILT": 9,
+    "LAND SQUARE FEET": 0
+  },
+  "clean": 12779,
+  "development": 10737,
+  "test": 2042,
+  "development_unique_properties": 10528,
+  "test_unique_properties": 2042,
+  "test_rows_property_seen_in_development": 83,
+  "development_repeated_property_rows": 209,
+  "source_sha256": {
+    "rollingsales_brooklyn.xlsx": "4d609a75ceb49a753def6ef203fe8f923fb8893d04eb4cd578393c733f27daae",
+    "rollingsales_queens.xlsx": "0852a3c9b8a05e31b4850aae6d6a1bbf201b8e29e6f2f00b29e50ad1be1adcf9"
+  }
+}

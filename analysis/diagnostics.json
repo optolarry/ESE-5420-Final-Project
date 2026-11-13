@@ -1,0 +1,9 @@
+{
+  "grouped_cv": {
+    "add_OLS": 0.34275530427337614,
+    "add_Ridge": 0.34264535628074244
+  },
+  "unseen_test_neighborhood_rows": 2,
+  "convergence_warnings": [],
+  "seconds": 98.14239311218262
+}

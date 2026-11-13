@@ -1,0 +1,62 @@
+{
+  "source": "datasets/houses_clean.csv",
+  "source_sha256": "86d0d16c55ef70b8962b2c94680734d95087786d978622b138e43808002a3ab8",
+  "development_n": 10737,
+  "last_date": "2026-06-30 00:00:00",
+  "outer_folds": 5,
+  "outer_seed": 42,
+  "inner_folds": 3,
+  "inner_seeds": [
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "grids": {
+    "HGB": {
+      "model__max_leaf_nodes": [
+        15,
+        31
+      ],
+      "model__min_samples_leaf": [
+        10,
+        30
+      ],
+      "model__l2_regularization": [
+        0.0,
+        10.0
+      ]
+    },
+    "RF": {
+      "model__max_features": [
+        0.7,
+        1.0
+      ],
+      "model__min_samples_leaf": [
+        2,
+        10,
+        30
+      ]
+    },
+    "SplineRidge": {
+      "encode__num__n_knots": [
+        4,
+        6
+      ],
+      "model__alpha": [
+        0.01,
+        1.0,
+        100.0,
+        10000.0
+      ]
+    }
+  },
+  "score": "log-price MSE for selection; MSE and RMSE reported",
+  "RF_trees": 200,
+  "HGB_iterations": 250,
+  "HGB_learning_rate": 0.05,
+  "September_accessed": false,
+  "July_August_scored": false,
+  "bootstrap": "2000 paired row resamples of fixed OOF errors, conditional on fits; folds and training uncertainty not fully covered"
+}
